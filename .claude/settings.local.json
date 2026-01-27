@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /Users/manupareek/diffusionmodel status)",
+      "Bash(pip install:*)"
+    ]
+  }
+}

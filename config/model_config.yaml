@@ -1,0 +1,33 @@
+# Diffusion Model Configuration
+# Override these values via environment variables or .env file
+
+# Architecture
+hidden_dim: 128
+num_layers: 8
+kernel_size: 3
+dropout: 0.1
+
+# Diffusion process
+num_timesteps: 1000
+noise_schedule: linear  # linear or cosine
+beta_start: 0.0001
+beta_end: 0.02
+prediction_type: epsilon  # epsilon, x_start, or v
+
+# Training
+batch_size: 64
+learning_rate: 0.0001
+weight_decay: 0.00001
+max_epochs: 100
+early_stopping_patience: 10
+
+# Sequence parameters
+window_size: 64      # Historical context window (bars)
+prediction_horizon: 5  # Steps ahead to predict
+
+# Device
+device: cuda
+num_workers: 4
+
+# Checkpointing
+save_top_k: 3

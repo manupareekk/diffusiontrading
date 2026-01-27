@@ -1,0 +1,26 @@
+# Trading Strategy Configuration
+
+# Position Sizing
+position_sizing_method: volatility_scaled  # fixed, kelly, volatility_scaled
+max_position_size: 1.0  # Maximum allocation per position (1.0 = 100%)
+kelly_fraction: 0.5     # Fractional Kelly (conservative)
+
+# Risk Management
+stop_loss_pct: 0.02     # 2% stop loss
+take_profit_pct: 0.04   # 4% take profit (2:1 risk-reward)
+max_drawdown_pct: 0.10  # 10% max drawdown triggers halt
+trailing_stop_enabled: true
+trailing_stop_pct: 0.015  # 1.5% trailing stop
+
+# Signal Thresholds
+min_confidence: 0.6     # Minimum confidence to enter trade
+min_expected_return: 0.001  # Minimum 0.1% expected return
+
+# Ensemble Weights (signals vs diffusion model)
+signal_weight: 0.4      # Technical signal contribution
+diffusion_weight: 0.6   # Diffusion model contribution
+
+# Intraday-specific
+max_trades_per_day: 10  # Limit overtrading
+min_bars_between_trades: 5  # Minimum bars between entries
+close_positions_eod: true   # Close all positions end of day

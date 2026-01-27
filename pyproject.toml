@@ -1,0 +1,88 @@
+[project]
+name = "diffusion-trading"
+version = "0.1.0"
+description = "Intraday trading system with diffusion models and technical signals"
+requires-python = ">=3.10"
+authors = [
+    {name = "Manu Pareek"}
+]
+
+dependencies = [
+    # Core
+    "numpy>=1.24.0",
+    "pandas>=2.0.0",
+    "scipy>=1.10.0",
+
+    # Deep Learning
+    "torch>=2.0.0",
+    "pytorch-lightning>=2.0.0",
+
+    # Technical Analysis
+    "pandas-ta>=0.3.14b",
+
+    # Data Providers
+    "yfinance>=0.2.0",
+
+    # Configuration
+    "pydantic>=2.0.0",
+    "pydantic-settings>=2.0.0",
+    "pyyaml>=6.0",
+    "python-dotenv>=1.0.0",
+
+    # Visualization
+    "matplotlib>=3.7.0",
+    "seaborn>=0.12.0",
+    "plotly>=5.0.0",
+    "streamlit>=1.28.0",
+
+    # Utilities
+    "tqdm>=4.65.0",
+    "loguru>=0.7.0",
+    "joblib>=1.2.0",
+    "pyarrow>=12.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "pytest-xdist>=3.0.0",
+    "black>=23.0.0",
+    "ruff>=0.0.270",
+    "mypy>=1.0.0",
+    "pre-commit>=3.0.0",
+]
+
+notebooks = [
+    "jupyter>=1.0.0",
+    "jupyterlab>=4.0.0",
+    "ipywidgets>=8.0.0",
+]
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*", "config*"]
+
+[tool.black]
+line-length = 100
+target-version = ["py310"]
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "I", "W"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v --tb=short"
