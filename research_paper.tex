@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{article}
+\documentclass[10pt,twocolumn]{article}
 
 % Packages
 \usepackage[utf8]{inputenc}
@@ -168,9 +168,9 @@ To validate that our diffusion model is learning real market dynamics, we utiliz
 
 The switch from ``Ranking'' to ``Factor-MVO'' yielded substantial performance gains. Figure~\ref{fig:performance} demonstrates the Sharpe Ratio improvement across different strategies.
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.85\textwidth]{figures/fig1_performance_comparison.png}
+\includegraphics[width=\columnwidth]{figures/fig1_performance_comparison.png}
 \caption{Portfolio Performance Comparison. The diffusion-based Factor-MVO strategy achieves a 20\% improvement in Sharpe Ratio over standard empirical methods when transaction costs are included.}
 \label{fig:performance}
 \end{figure}
@@ -195,12 +195,12 @@ Turnover & High & Medium-Low & Low \\
 \textbf{Analysis of Improvement:}
 The key driver of superior performance is \textbf{weight stability}, as shown in Figure~\ref{fig:weights}. Standard empirical methods generate volatile portfolio weights that trigger excessive trading costs. The diffusion model, by incorporating transaction costs directly into the loss function, produces smoother weight transitions.
 
-\begin{figure}[h]
+\begin{figure*}[!htbp]
 \centering
-\includegraphics[width=0.95\textwidth]{figures/fig2_weight_stability.png}
+\includegraphics[width=0.9\textwidth]{figures/fig2_weight_stability.png}
 \caption{Portfolio Weight Stability Over Time. Top: Standard empirical model exhibits high churn with rapid weight changes. Bottom: Diffusion model produces smooth transitions, reducing transaction costs by approximately 40\%.}
 \label{fig:weights}
-\end{figure}
+\end{figure*}
 
 \begin{itemize}
 \item \textbf{Risk Reduction:} MVO approach reduced Max Drawdown from 12.4\% to 9.8\% through superior covariance estimation
@@ -211,9 +211,9 @@ The key driver of superior performance is \textbf{weight stability}, as shown in
 
 We evaluated the realism of generated data using the TRADES Predictive Score (MAE), shown in Figure~\ref{fig:predictive}.
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.85\textwidth]{figures/fig4_predictive_score.png}
+\includegraphics[width=\columnwidth]{figures/fig4_predictive_score.png}
 \caption{Generative Fidelity Comparison. The diffusion model achieves approximately 3× better Predictive Score than GAN baseline, indicating synthetic data captures realistic market dynamics including volatility clustering and autocorrelation patterns.}
 \label{fig:predictive}
 \end{figure}
@@ -228,9 +228,9 @@ We evaluated the realism of generated data using the TRADES Predictive Score (MA
 
 Using the Fourier-enhanced loss function transformed the model into a powerful denoiser. Figure~\ref{fig:f1score} demonstrates the dramatic improvement in trend-following classification accuracy.
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.75\textwidth]{figures/fig3_f1_score.png}
+\includegraphics[width=\columnwidth]{figures/fig3_f1_score.png}
 \caption{Directional Prediction Accuracy. Applying the diffusion denoiser to raw market data improves F1 score from 0.452 to 0.806, representing a 78\% improvement in trend classification accuracy.}
 \label{fig:f1score}
 \end{figure}
@@ -248,7 +248,7 @@ A key finding is \textbf{Responsiveness}. When we injected a synthetic ``Whale A
 
 \begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.85\textwidth]{figures/fig5_leverage_effect.png}
+\includegraphics[width=\columnwidth]{figures/fig5_leverage_effect.png}
 \caption{Leverage Effect Modeling. The diffusion model correctly captures the negative correlation between returns and future volatility (leverage effect), while GANs produce erratic, non-stationary correlations. This enables realistic stress-testing and risk management.}
 \label{fig:leverage}
 \end{figure}
