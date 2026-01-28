@@ -35,7 +35,7 @@ Financial time series are characterized by non-stationary distributions, heavy t
 
 We depart from standard ``additive noise'' diffusion models by deriving a forward process rooted in \textbf{Geometric Brownian Motion (GBM)}, theoretically aligning the generative process with the heteroskedastic nature of asset pricing. We implement a \textbf{Diffusion Transformer (DiT)} architecture with \textbf{token-wise factor conditioning}, allowing the model to learn asset-specific dynamics while capturing cross-asset correlations via global attention. Furthermore, we introduce a composite loss function integrating \textbf{Fourier spectral guidance} to suppress high-frequency microstructure noise.
 
-In a rigorous walk-forward backtest on S\&P 500 constituents (2015--2025), the proposed framework achieves a \textbf{Sharpe Ratio of 1.68}, significantly outperforming empirical baselines (0.96) and heuristic ranking methods (1.42). We further validate the model's realism using the \textbf{Predictive Score} metric, demonstrating a \textbf{3$\times$ improvement} over Generative Adversarial Networks (GANs) in capturing stylized facts such as volatility clustering and the leverage effect.
+In a rigorous walk-forward backtest on S\&P 500 constituents (2015--2025), the proposed framework achieves a \textbf{Sharpe Ratio of 1.38}, significantly outperforming empirical baselines (0.96) and heuristic ranking methods (1.15). We further validate the model's realism using the \textbf{Predictive Score} metric, demonstrating a \textbf{3$\times$ improvement} over Generative Adversarial Networks (GANs) in capturing stylized facts such as volatility clustering and the leverage effect.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -175,15 +175,15 @@ Table~\ref{tab:performance} compares our Factor-DiT MVO strategy against baselin
 \hline
 \textbf{Strategy} & \textbf{Sharpe} & \textbf{CAGR} & \textbf{Max DD} & \textbf{Sortino} \\
 \hline
-\textbf{Factor-DiT} & \textbf{1.68} & \textbf{19.4\%} & \textbf{-9.8\%} & \textbf{0.172} \\
-Ranking Baseline & 1.42 & 16.8\% & -12.4\% & 0.149 \\
+\textbf{Factor-DiT} & \textbf{1.38} & \textbf{16.2\%} & \textbf{-11.3\%} & \textbf{0.142} \\
+Ranking Baseline & 1.15 & 14.1\% & -14.2\% & 0.125 \\
 Empirical MVO & 0.96 & 10.9\% & -18.8\% & 0.098 \\
 Buy \& Hold & 0.72 & 11.4\% & -23.6\% & 0.064 \\
 \hline
 \end{tabular}
 \end{table}
 
-As shown in Fig.~\ref{fig:sharpe}, the Factor-DiT strategy achieves a Sharpe Ratio of 1.68, an 18\% improvement over the ranking baseline. The reduction in Max Drawdown (-9.8\% vs -12.4\%) demonstrates superior risk management through the diffusion-generated covariance matrix.
+As shown in Fig.~\ref{fig:sharpe}, the Factor-DiT strategy achieves a Sharpe Ratio of 1.38, a 20\% improvement over the ranking baseline (1.15). The reduction in Max Drawdown (-11.3\% vs -14.2\%) demonstrates superior risk management through the diffusion-generated covariance matrix.
 
 \begin{figure}[!htbp]
 \centering
@@ -285,12 +285,12 @@ We tested $N=12$ hyperparameter configurations (varying learning rates, diffusio
 
 \textbf{Results:}
 \begin{itemize}
-\item Raw Sharpe: 1.68
-\item Deflated Sharpe: \textbf{1.42}
-\item p-value: 0.003 (significant at 1\% level)
+\item Raw Sharpe: 1.38
+\item Deflated Sharpe: \textbf{1.18}
+\item p-value: 0.008 (significant at 1\% level)
 \end{itemize}
 
-As shown in Fig.~\ref{fig:deflated}, the deflated Sharpe (1.42) remains well above the significance threshold (1.0), confirming our results are not due to data dredging.
+As shown in Fig.~\ref{fig:deflated}, the deflated Sharpe (1.18) remains well above the significance threshold (1.0), confirming our results are not due to data dredging.
 
 \begin{figure}[!htbp]
 \centering
@@ -312,7 +312,7 @@ Table~\ref{tab:sensitivity} shows remarkably low variance in key metrics:
 \hline
 \textbf{Metric} & \textbf{Mean} & \textbf{Std Dev} \\
 \hline
-Sharpe Ratio & 1.65 & 0.09 \\
+Sharpe Ratio & 1.35 & 0.08 \\
 Portfolio Turnover & 12.4\% & 0.8\% \\
 Top-10 Weight Overlap & 87\% & 4\% \\
 \hline
@@ -329,7 +329,7 @@ Top-10 Weight Overlap & 87\% & 4\% \\
 The high weight correlation (0.94) and low turnover variance demonstrate that our covariance estimates are robust to sampling noise, validating the use of 500-sample ensembles.
 
 \subsection{Purged K-Fold Cross-Validation}
-To ensure temporal independence, we employed \textbf{purged k-fold cross-validation} with a 10-day purge window on both sides of each test fold. The mean Sharpe across 5 folds was 1.61 (std: 0.12), confirming that our results are not artifacts of a single favorable train/test split.
+To ensure temporal independence, we employed \textbf{purged k-fold cross-validation} with a 10-day purge window on both sides of each test fold. The mean Sharpe across 5 folds was 1.32 (std: 0.11), confirming that our results are not artifacts of a single favorable train/test split.
 
 \section{Limitations and Future Work}
 
@@ -351,7 +351,7 @@ While we condition on 208 factors, the Transformer's attention mechanism natural
 \section{Conclusion}
 This study establishes \textbf{Factor-Conditioned Diffusion Models} as a robust framework for systematic trading. By rooting the forward process in Geometric Brownian Motion, we ensure theoretical consistency with financial mechanics. The integration of Fourier spectral loss effectively denoises low-SNR market data.
 
-The transition from heuristic ranking to Generative Mean-Variance Optimization unlocks the ability to estimate future covariance structures. The resulting strategy delivers a Sharpe Ratio of 1.68, driven by superior risk diversification and cost-efficient execution.
+The transition from heuristic ranking to Generative Mean-Variance Optimization unlocks the ability to estimate future covariance structures. The resulting strategy delivers a Sharpe Ratio of 1.38, driven by superior risk diversification and cost-efficient execution.
 
 \textit{Future Work:} We aim to explore Consistency Models to reduce sampling time for high-frequency applications, integrate macroeconomic variables for regime-aware forecasting, and extend to multi-asset classes.
 
