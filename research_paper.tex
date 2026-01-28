@@ -1,4 +1,4 @@
-\documentclass[10pt,twocolumn]{article}
+\documentclass[10pt]{article}
 
 % Packages
 \usepackage[utf8]{inputenc}
@@ -26,6 +26,8 @@
 \begin{abstract}
 This study presents a next-generation framework for systematic trading of S\&P 500 equities, moving beyond heuristic ranking strategies to a \textbf{generative Mean-Variance Optimization (MVO)} approach. While traditional deep learning models (LSTM, Transformers) often regress to the mean, failing to capture the multi-modal nature of financial returns, our approach utilizes a \textbf{Conditional Diffusion Model} to learn the full cross-sectional distribution of future returns. By upgrading the baseline architecture to use \textbf{token-wise factor conditioning} and enhancing the training objective with \textbf{frequency-domain (Fourier) loss}, we significantly improve the signal-to-noise ratio (SNR) of our predictions. In a rigorous walk-forward backtest (2015--2025), the updated strategy achieves a projected \textbf{Sharpe Ratio of 1.68}, outperforming the baseline ranking method (1.42) and traditional benchmarks. The results demonstrate that diffusion models are not merely valid for image generation but are superior engines for estimating the \textbf{covariance structures} required for institutional-grade portfolio construction.
 \end{abstract}
+
+\twocolumn
 
 \section{Introduction}
 
