@@ -13,6 +13,11 @@
 \usepackage[section]{placeins}  % Prevents floats from crossing sections
 \usepackage{float}              % For better float control
 \usepackage{multicol}           % For two-column layout without page break
+\usepackage[compact]{titlesec}  % Better section title formatting
+
+% Adjust section title spacing for two-column
+\titlespacing*{\section}{0pt}{8pt plus 2pt minus 2pt}{4pt plus 2pt minus 2pt}
+\titlespacing*{\subsection}{0pt}{6pt plus 2pt minus 2pt}{3pt plus 2pt minus 2pt}
 
 % Title and Author
 \title{\Large\textbf{Factor-Conditioned Diffusion Models for Mean-Variance Portfolio Optimization}}
@@ -258,7 +263,7 @@ A key finding is \textbf{Responsiveness}. When we injected a synthetic ``Whale A
 
 The leverage effect—where negative returns lead to higher future volatility—is a critical stylized fact of financial markets. The diffusion model's ability to reproduce this pattern validates its use for realistic scenario generation.
 
-\section{Discussion: Why Diffusion Models Win}
+\section{Discussion}
 
 \subsection{Capturing Non-Gaussian Distributions}
 
