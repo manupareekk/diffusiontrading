@@ -10,6 +10,8 @@
 \usepackage{cite}
 \usepackage{algorithm}
 \usepackage{algorithmic}
+\usepackage[section]{placeins}  % Prevents floats from crossing sections
+\usepackage{float}              % For better float control
 
 % Title and Author
 \title{\Large\textbf{Factor-Conditioned Diffusion Models for Mean-Variance Portfolio Optimization}}
@@ -244,7 +246,7 @@ This doubling in classification accuracy suggests the diffusion model successful
 
 A key finding is \textbf{Responsiveness}. When we injected a synthetic ``Whale Agent'' executing large buy orders, the diffusion model adjusted future price paths upwards, exhibiting permanent price impact. This behavior, captured in Figure~\ref{fig:leverage}, demonstrates the model has learned the causal relationship between large orders and price dynamics.
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=0.85\textwidth]{figures/fig5_leverage_effect.png}
 \caption{Leverage Effect Modeling. The diffusion model correctly captures the negative correlation between returns and future volatility (leverage effect), while GANs produce erratic, non-stationary correlations. This enables realistic stress-testing and risk management.}
