@@ -1,4 +1,4 @@
-\documentclass[10pt,journal,letterpaper]{IEEEtran}
+\documentclass[10pt,conference,letterpaper]{IEEEtran}
 
 % Required packages
 \usepackage{times}
@@ -41,8 +41,6 @@ In a rigorous walk-forward backtest on S\&P 500 constituents (2015--2025), the p
 \begin{IEEEkeywords}
 Diffusion Models, Portfolio Optimization, Mean-Variance, Geometric Brownian Motion, Fourier Transform, Quantitative Finance
 \end{IEEEkeywords}
-
-\IEEEpeerreviewmaketitle
 
 \section{Introduction}
 \IEEEPARstart{F}{orecasting} financial time series is notoriously difficult due to the ``efficient market hypothesis'' in its weak form—predictable patterns are often arbitrage-d away, leaving a signal dominated by stochastic noise. Traditional deep learning approaches, such as Recurrent Neural Networks (RNNs) or Transformers trained on Mean Squared Error (MSE), implicitly assume unimodal conditional distributions. In practice, this leads to ``safe,'' mean-reverting predictions that underestimate tail risks and fail to capture regime shifts.
