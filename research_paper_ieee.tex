@@ -8,6 +8,7 @@
 \usepackage{cite}
 \usepackage{url}
 \usepackage{balance}
+\usepackage{multicol}
 
 % Adjust spacing
 \IEEEoverridecommandlockouts
@@ -41,6 +42,8 @@ In a rigorous walk-forward backtest on S\&P 500 constituents (2015--2025), the p
 \begin{IEEEkeywords}
 Diffusion Models, Portfolio Optimization, Mean-Variance, Geometric Brownian Motion, Fourier Transform, Quantitative Finance
 \end{IEEEkeywords}
+
+\begin{multicols}{2}
 
 \section{Introduction}
 \IEEEPARstart{F}{orecasting} financial time series is notoriously difficult due to the ``efficient market hypothesis'' in its weak form—predictable patterns are often arbitrage-d away, leaving a signal dominated by stochastic noise. Traditional deep learning approaches, such as Recurrent Neural Networks (RNNs) or Transformers trained on Mean Squared Error (MSE), implicitly assume unimodal conditional distributions. In practice, this leads to ``safe,'' mean-reverting predictions that underestimate tail risks and fail to capture regime shifts.
@@ -354,6 +357,8 @@ This study establishes \textbf{Factor-Conditioned Diffusion Models} as a robust 
 The transition from heuristic ranking to Generative Mean-Variance Optimization unlocks the ability to estimate future covariance structures. The resulting strategy delivers a Sharpe Ratio of 1.38, driven by superior risk diversification and cost-efficient execution.
 
 \textit{Future Work:} We aim to explore Consistency Models to reduce sampling time for high-frequency applications, integrate macroeconomic variables for regime-aware forecasting, and extend to multi-asset classes.
+
+\end{multicols}
 
 \balance
 \section*{Acknowledgments}
